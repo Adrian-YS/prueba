@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}">
+
+    <title>Title</title>
+</head>
+<body>
+<div class="container mt-3">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Controles</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="alumno : ${alumnos}">
+            <td th:text="${alumno.alumnoId}"></td>
+            <td th:text="${alumno.nombre}"  ></td>
+            <td th:text="${alumno.apellido}" ></td>
+            <td th:text="${alumno.email}" ></td>
+            <td>
+                <a th:href="@{/alumno/editar/} + ${alumno.alumnoId}" class="btn btn-editar">Editar</a>
+                <a th:href="@{/alumno/eliminar/} + ${alumno.alumnoId}" class="btn btn-eliminar">Eliminar</a>
+
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+    <a th:href="@{/alumno/formulario}" class="btn btn-guardar">Nuevo Alumno</a>
+</div>
+<footer>
+    <p>&copy; CHATO, SI VALIO</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
